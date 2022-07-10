@@ -1,13 +1,19 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './App';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 
+import AppClass from './AppClass';
+import AppFunc from './AppFunc';
+
 ReactDOM.render(
-    <App/>,
-  document.getElementById('root')
+  <div>
+    <AppClass/>
+    <AppFunc/>
+  </div>, document.getElementById('root')
+    
+  
 );
 
 

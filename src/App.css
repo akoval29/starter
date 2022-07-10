@@ -1,3 +1,7 @@
+body {
+  background-color: #f1efdb;
+}
+
 .App {
   text-align: center;
 }
@@ -22,10 +26,22 @@
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
+  
 }
 
 .App-link {
   color: #61dafb;
+}
+
+.innerText {
+  font-size: calc(4px + 2vmin);
+  margin: 5px auto 0 auto;
+  padding: 5px;
+  border-radius: 5px;
+  text-align: center;
+  box-shadow: 5px 5px 10px rgba(0,0,0, .2);
+  background: linear-gradient(90deg, rgba(131,58,180,1) 0%, rgba(253,29,29,1) 50%, rgba(252,176,69,1) 100%);
+  /* margin-bottom: 50px; */
 }
 
 @keyframes App-logo-spin {
