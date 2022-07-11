@@ -1,4 +1,4 @@
-import {Component, useState, useEffect} from 'react';
+import {Component} from 'react';
 import {Container} from 'react-bootstrap';
 import './App.css';
 
@@ -11,10 +11,10 @@ class Slider extends Component {
         }
     }
 
+// цих два хука було замінено на useEffect в функцінальному компоненті
     componentDidMount () {
         document.title = `Slide: ${this.state.slide}`;
     }
-
     componentDidUpdate () {
         document.title = `Slide: ${this.state.slide}`;
     }
