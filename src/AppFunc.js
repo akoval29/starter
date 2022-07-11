@@ -1,13 +1,12 @@
-import {useState, useEffect, useCallback} from 'react';
+import {useState, useEffect, useCallback, useMemo} from 'react';
 import {Container} from 'react-bootstrap';
 import './App.css';
 
-const calcValue = () => {
-    // return Math.round(Math.random() * (50 - 1) + 1);
-    return 0;
-}
-
 const Slider = (props) => {
+    const calcValue = () => {
+        // return Math.round(Math.random() * (50 - 1) + 1);
+        return 0;
+    }
     const [slide, setSlide] = useState(calcValue);
     const [autoPlay, setAutoplay] = useState(false);
 
@@ -67,12 +66,27 @@ const Slider = (props) => {
         setAutoplay(autoPlay => !autoPlay);
     }
 
+    const countTotal = (num) => {
+        console.log('counting...');
+        return num + 10;
+    }
+    const total = useMemo(() => {
+        return countTotal(slide);
+    }, [slide]);
+
+    const style = useMemo(() => ({
+        color: slide > 4 ? 'red' : 'black'
+    }), [slide])
+
+    useEffect(() => {
+        console.log('styled!');
+    }, [style]);
+
     return (
         <Container className='App'>
             <div className="slider w-50 m-auto border mb-5">
             <div className='innerText'> Створений на функціональних компонентах</div>
                 {/* <img className="d-block w-100 innerText" src="https://www.planetware.com/wpimages/2020/02/france-in-pictures-beautiful-places-to-photograph-eiffel-tower.jpg" alt="slide" /> */}
-                
                 {/* {
                     getSomeImages().map((url, i) => {
                         return (
@@ -80,9 +94,7 @@ const Slider = (props) => {
                         )
                     })
                 } */}
-                
-                    <Slide getSomeImages={getSomeImages}/>
-
+                <Slide getSomeImages={getSomeImages}/>
                 <div className="text-center mt-3">Active slide {slide} <br/>{autoPlay ? 'auto' : null}</div>
                 <div className="buttons mt-3">
                     <button 
@@ -95,6 +107,7 @@ const Slider = (props) => {
                         className="btn btn-primary me-2"
                         onClick={toggleAutoplay}>toggle autoplay</button>
                 </div>
+                <div style={style} className="text-center mt-3">Total slides: {total}</div>
             </div>
         </Container>
     )
